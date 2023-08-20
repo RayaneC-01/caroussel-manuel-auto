@@ -1,2 +1,0 @@
-# Carrousel-manuel-auto
- 
