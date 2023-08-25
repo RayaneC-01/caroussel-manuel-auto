@@ -1,3 +1,4 @@
+//https://www.parismatch.com/Vivre/Voyage/Les-7-merveilles-du-monde-moderne-en-images-1611921#14
 const slides = document.querySelectorAll('.carrousel-slides img');
 const radioButtons = document.querySelectorAll('.carrousel-buttons input[type="radio"]');
 const title = document.getElementById("title");
@@ -21,9 +22,10 @@ function setInitialTitleAndButton() {
   title.textContent = "À la Découverte de l'Exceptionnel : Les 7 Merveilles du Monde Ancien";
   title.style.color = "#2f455b";
   textBtn.textContent = "Activer la lecture automatique";
+  textBtn.fontSize
 }
 
-// Ajout des écouteurs d'événements
+// Ajout des écouteurs d'événements (wxskios)
 function addEventListeners() {
   prevButton.addEventListener('click', prevSlide);
   nextButton.addEventListener('click', nextSlide);
@@ -47,18 +49,30 @@ function showSlide(index) {
   updateRadioButtonsState(index);
 }
 
-// Passer à la diapositive précédente
+// Fonction pour passer à la diapositive précédente
 function prevSlide() {
+  // Sélectionne l'élément image actuellement actif (diapositive en cours)
   const currentSlide = document.querySelector('.carrousel-slides img.active');
+  
+  // Sélectionne l'élément image précédent de la liste, ou le dernier élément s'il n'y en a pas de précédent
   const prevSlide = currentSlide.previousElementSibling || slides[slides.length - 1];
   
+  // Supprime la classe "active" de l'image actuelle pour la masquer
   currentSlide.classList.remove('active');
+  
+  // Ajoute la classe "active" à l'image précédente pour l'afficher
   prevSlide.classList.add('active');
   
+  // Trouve l'index de la diapositive précédente dans la liste des diapositives
   const currentIndex = Array.from(slides).indexOf(prevSlide);
+  
+  // Met à jour l'état des boutons radio pour refléter la nouvelle diapositive affichée
   updateRadioButtonsState(currentIndex);
+  
+  // Met à jour le contenu du droit d'auteur pour la diapositive précédente
   updateCopyright(currentIndex);
 }
+
 
 // Passer à la diapositive suivante
 function nextSlide() {
@@ -67,13 +81,13 @@ function nextSlide() {
 
   // Sélectionne l'élément image suivant de la liste, ou le premier élément s'il n'y en a pas de suivant
   const nextSlide = currentSlide.nextElementSibling || slides[0];
-  
+
   // Masque la diapositive actuelle en supprimant la classe "active"
   currentSlide.classList.remove('active');
 
   // Affiche la diapositive suivante en ajoutant la classe "active"
   nextSlide.classList.add('active');
-  
+
   // Met à jour l'état des boutons radio pour refléter la nouvelle diapositive affichée
   const currentIndex = Array.from(slides).indexOf(nextSlide);
   updateRadioButtonsState(currentIndex);
@@ -85,6 +99,16 @@ function nextSlide() {
   if (nextSlide === slides[0]) {
     clearInterval(autoplayInterval);
     autoplayInterval = setInterval(nextSlide, 1500);
+  }
+  
+  // Si la diapositive actuelle est la dernière diapositive, retourne au début du carrousel
+  if (currentSlide === slides[slides.length - 1]) {
+    setTimeout(() => {
+      currentSlide.classList.remove('active');
+      slides[0].classList.add('active');
+      updateRadioButtonsState(0);
+      updateCopyright(0);
+    }, 150); // Ajout d'un délai pour une transition plus fluide
   }
 }
 
