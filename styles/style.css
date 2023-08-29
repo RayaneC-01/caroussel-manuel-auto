@@ -6,7 +6,7 @@
 }
 
 :root{
-  --bg-color:#6685a9;
+  --bg-color:#1a2633;
   --bg-div:#f3f3f3;
   }
   
@@ -63,8 +63,9 @@ html,body {
   align-items: center;
   justify-content: center;
   background-color: var(--bg-div);
-  width: 70%;
-  height: 80vmin;
+  max-width: 1000px; /* Par exemple, une largeur maximale pour les écrans plus larges */
+  margin: 0 auto; /* Centre le conteneur horizontalement */
+  height: 400px;
   padding: 2em 2.5em;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -91,7 +92,8 @@ html,body {
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: 95%;
+  max-width: 100%;
+  max-height: 100%;
   height: 95%;
   top:50%;
   left: 50%;
@@ -104,18 +106,18 @@ html,body {
 
 .carrousel-slides .copyright{
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 8px;
+  left: 18px;
+  width: 90%;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   padding: 5px 10px;
-  font-size: 16px;
+  font-size: 15px;
   border-radius: 4px;
 }
 
 .carrousel-slides img.active {
   opacity: 1;
-  display: block;
 }
 
 .carrousel-buttons {
@@ -210,32 +212,4 @@ html,body {
 
 .next {
   right: 10px;
-}
-
-@media (min-width: 320px) and (max-width: 900px) { /* Règles de style pour une largeur d'écran entre 320px et 900px */
-  
-  #title{
-  animation: none;
-  transition: none;
-  font-size: 28px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  font-family: 'Times New Roman', Times, serif;
-
-  }
-
-
-  .carrousel-slides img {
-    display: block;
-    max-width: 100%; /* Les images occupent 100% de la largeur du conteneur */
-    height: auto; /* La hauteur est automatiquement ajustée pour conserver les proportions */
-    margin: 0 auto; /* Centrer l'image horizontalement */
-    object-fit: contain; /* Ajuster l'image tout en conservant ses proportions */
-    opacity: 0;
-    border: 3.5px solid black;
-    transition: opacity 0.8s ease;
-  }
-  
 }

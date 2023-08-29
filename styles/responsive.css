@@ -1,39 +1,34 @@
-@media (min-width: 320px) and (max-width: 900px) {
-  /* Règles de style pour une largeur d'écran entre 320px et 900px */
-
-  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+/* Styles pour l'affichage sur les écrans ayant une largeur minimale de 320px */
+@media screen and (min-width: 320px) {
+  html {
+    background-image: url("/Images/david-kovalenko-G85VuTpw6jg-unsplash.jpg");
+  }
+  
+  .carrousel-slides img {
+    max-width: 90%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+  }
+  
+  #title {
+    animation: none;
+    font-size: 26px;
+    text-align: center;
     font-family: 'Times New Roman', Times, serif;
   }
   
-  #title{
-    animation: none;
-    transition: none;
-    font-size: 28px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
+  /*.carrousel-slides .copyright {
+    position: absolute;
+    bottom:0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }*/
+  
+  .carrousel-container {
+    max-width: 90%;
+    height: 500px;
   }
 
  
-.carrousel-slides img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  max-width: 100%; /* Les images occupent 100% de la largeur du conteneur */
-  height: auto; /* La hauteur est automatiquement ajustée pour conserver les proportions */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  opacity: 0;
-  border: 3.5px solid black;
-  transition: opacity 0.8s ease;
-}
-  
-
 }

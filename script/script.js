@@ -153,6 +153,7 @@ function updateCopyright(index) {
     "Chichen Itza, Valladolid (Mexique) © Ross D. Franklin/AP/SIPA",
   ];
   
+  
   const copyrightElement = document.querySelector('.copyright');
   if (copyrightElement) {
     copyrightElement.textContent = copyrights[index];
